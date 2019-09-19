@@ -27,7 +27,7 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText mEmailEt,mPasswordEt;
+    EditText mEmailEt,mPasswordEt,mcpasswordEt;
     Button mRegisterBtn,mHaveAccount;
 
 
@@ -47,6 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         mEmailEt=findViewById(R.id.emailEt);
         mPasswordEt=findViewById(R.id.passwordEt);
+        mcpasswordEt=findViewById(R.id.cpasswordEt);
         mRegisterBtn=findViewById(R.id.register_btn);
 
 
@@ -66,6 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String email=mEmailEt.getText().toString().trim();
 
                 String password=mPasswordEt.getText().toString().trim();
+                String cpassword=mcpasswordEt.getText().toString().trim();
 
                 if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     mEmailEt.setError("Invalid Email Address");
@@ -73,8 +75,11 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else
                  if(password.length()<6){
-                    mPasswordEt.setError("password not lenghty");
+                    mPasswordEt.setError("Password Must Be More Than 6 Characters");
                     mPasswordEt.setFocusable(true);
+                }if(!(password==cpassword)){
+                     mcpasswordEt.setError("Password not matching");
+                     mcpasswordEt.setFocusable(true);
                 }
                 else{
                     registerUser(email,password);

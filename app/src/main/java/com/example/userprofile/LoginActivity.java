@@ -202,7 +202,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginUser(String email, String passw) {
 //Loading
-        pd.setMessage("Loggin in");
+        pd.setMessage("Logging in");
 pd.show();
 
         mAuth.signInWithEmailAndPassword(email, passw)

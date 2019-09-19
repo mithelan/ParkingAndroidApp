@@ -251,7 +251,7 @@ builder.setItems(options, new DialogInterface.OnClickListener() {
         linearLayout.setPadding(10,10,10,10);
 
         final EditText editText=new EditText(getActivity());
-        editText.setHint("ENter "+key);//hint
+        editText.setHint("Enter "+key);//hint
 
         linearLayout.addView(editText);
 

@@ -119,6 +119,7 @@ public class DashboardActivity extends AppCompatActivity {
         int id=item.getItemId();
         if(id==R.id.action_logout){
           firebaseAuth.signOut();
+
           checkUserStatus();
         }
 

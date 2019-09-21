@@ -13,30 +13,41 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:background="@color/colorPrimaryDark">
+            android:layout_height="270dp"
+            android:background="@color/colorp">
+
+            <TextView
+                android:layout_width="1000dp"
+                android:layout_height="match_parent"
+                android:text="PROFILE"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:textAlignment="center"/>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+
+                android:outlineSpotShadowColor="@color/colorBlack">
 
                 <ImageView
                     android:id="@+id/avatarIv"
-                    android:layout_marginStart="20dp"
-                    android:background="@color/colorPrimary"
-                    android:padding="5dp"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
+                    android:layout_marginLeft="125dp"
                     android:layout_marginTop="60dp"
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/ic_add"/>
+                    android:background="@color/colorPrimary"
+                    android:padding="5dp"
+
+                    android:src="@drawable/ic_add" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="100dp">
+                    android:layout_marginLeft="-190dp"
+                    android:layout_marginTop="205dp"
+                    android:orientation="vertical">
 
 
                     <TextView
@@ -44,28 +55,29 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="5dp"
-                        android:text="NAME"
-                        android:textSize="25dp"
+                        android:layout_marginLeft="5dp"
+                        android:text=""
                         android:textColor="#ffffff"
-                        android:layout_marginLeft="5dp"/>
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/emailTv"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="5dp"
-                        android:text="Email"
+                        android:layout_marginLeft="5dp"
 
-                        android:textColor="#ffffff"
-                        android:layout_marginLeft="5dp"/>
+                        android:text=""
+                        android:textColor="#ffffff" />
+
                     <TextView
                         android:id="@+id/phoneTv"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="5dp"
-                        android:text="Phone"
-                        android:textColor="#ffffff"
-                        android:layout_marginLeft="5dp"/>
+                        android:layout_marginLeft="5dp"
+                        android:text=""
+                        android:textColor="#ffffff" />
 
 
                 </LinearLayout>
@@ -83,11 +95,31 @@
             android:layout_width="wrap_content"
             android:layout_height="107dp"
             android:layout_marginLeft="300dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="200dp"
             android:src="@drawable/ic_edit"
 
             />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NAME :"
+            android:textSize="13dp"
+           android:layout_marginTop="205dp"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EMAIL : "
+            android:textSize="13dp"
+            android:layout_marginTop="225dp"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PHONE :"
+            android:textSize="13dp"
+            android:layout_marginTop="245dp"
+            android:layout_marginLeft="10dp"/>
     </RelativeLayout>
 
 

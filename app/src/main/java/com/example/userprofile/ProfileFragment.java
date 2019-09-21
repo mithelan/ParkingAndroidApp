@@ -176,7 +176,7 @@ DatabaseReference databaseReference;
 
     private void requestStoragePermission(){
 
-        requestPermissions(storagePermissions,STORAGE_REQUEST_CODE);
+        ActivityCompat.requestPermissions(getActivity(),storagePermissions,STORAGE_REQUEST_CODE);
     }
 
 
@@ -192,7 +192,7 @@ DatabaseReference databaseReference;
 
     private void requestCameraPermission(){
 
-        requestPermissions(storagePermissions,STORAGE_REQUEST_CODE);
+        ActivityCompat.requestPermissions(getActivity(),cameraPermissions,CAMERA_REQUEST_CODE);
     }
 
 
@@ -266,6 +266,7 @@ builder.setItems(options, new DialogInterface.OnClickListener() {
                 String value=editText.getText().toString().trim();
 
                 if(!TextUtils.isEmpty(value)){
+
                    pd.show();
                    HashMap<String,Object>result=new HashMap<>();
                    result.put(key,value);
@@ -309,7 +310,8 @@ databaseReference.child(user.getUid()).updateChildren(result).addOnSuccessListen
     }
 
     private void showImagePicDialog() {
-        String options[]={"Camera","Gallery "};
+
+        String options[] = {"Camera", "Gallery "};
 
         //alert
         AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
@@ -317,9 +319,9 @@ databaseReference.child(user.getUid()).updateChildren(result).addOnSuccessListen
         builder.setTitle("Pick Image From");
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+            public void onClick(DialogInterface dialogInterface, int i1) {
 //handle
-                if(i==0){
+                if(i1==0){
                     //camera
 
                     if(!checkCameraPermission()){
@@ -330,7 +332,7 @@ databaseReference.child(user.getUid()).updateChildren(result).addOnSuccessListen
                     }
 
                 }
-                else if(i==1){
+                else if(i1==1){
                    //Gallery
 
                     if(!checkStoragePermission()){
@@ -390,8 +392,6 @@ databaseReference.child(user.getUid()).updateChildren(result).addOnSuccessListen
           }
           break;
       }
-
-
 
     }
 

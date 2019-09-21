@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
                  if(password.length()<6){
                     mPasswordEt.setError("Password Must Be More Than 6 Characters");
                     mPasswordEt.setFocusable(true);
-                }if(!(password==cpassword)){
+                }if(!password.equals(cpassword)){
                      mcpasswordEt.setError("Password not matching");
                      mcpasswordEt.setFocusable(true);
                 }

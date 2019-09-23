@@ -95,11 +95,6 @@
             android:layout_height="wrap_content"
             android:text="Delete Account"/>
 
-        <ProgressBar
-            android:id="@+id/p"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="-100dp"></ProgressBar>
 
 
 

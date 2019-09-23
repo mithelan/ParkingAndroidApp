@@ -125,7 +125,7 @@ public class ProfileFragment extends Fragment {
         phoneTv = view.findViewById(R.id.phoneTv);
         fab = view.findViewById(R.id.fab);
         deleteAccount = view.findViewById(R.id.btnDeleteAccount);
-        progressBar = view.findViewById(R.id.p);
+
 
 
          //DELETE
@@ -147,12 +147,16 @@ public class ProfileFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
-                                progressBar.setVisibility(View.VISIBLE);
+
                                 user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
+
                                             Toast.makeText(getActivity(), "Account Deleted", Toast.LENGTH_LONG).show();
+                                            Intent delete=new Intent(getActivity(),LoginActivity.class);
+                                            startActivity(delete);
+
                                         } else {
                                             Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                         }

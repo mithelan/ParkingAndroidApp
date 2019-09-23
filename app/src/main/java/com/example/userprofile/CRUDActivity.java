@@ -81,6 +81,7 @@ public class CRUDActivity extends AppCompatActivity {
     public void n_onclickSave(View view) {
         n_dbRef = FirebaseDatabase.getInstance().getReference().child("Complaint");
         if(ctd.isValid(txtMobile.getText().toString())) {
+            if(ctd.isValid1(txtDate.getText().toString())) {
             try {
                 if (TextUtils.isEmpty(txtName.getText().toString()))
                     Toast.makeText(getApplicationContext(), "Please Enter a Name ", Toast.LENGTH_SHORT).show();
@@ -115,7 +116,10 @@ public class CRUDActivity extends AppCompatActivity {
             }
         }else{
             Toast.makeText(getApplicationContext(), "Enter 10 Numbers", Toast.LENGTH_SHORT).show();
-        }
+        }}
+            else{
+                Toast.makeText(getApplicationContext(), "Enter  date in MM/YY Format", Toast.LENGTH_SHORT).show();
+            }
     }
 
 

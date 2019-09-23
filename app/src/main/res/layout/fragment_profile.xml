@@ -87,28 +87,36 @@
         android:layout_width="match_parent"
         android:layout_height="460dp"
         android:layout_marginTop="275dp"
-        android:background="#ffffff">
+        android:background="#ffffff"
+        android:orientation="vertical">
 
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Account Settings"
+            android:textSize="25dp"/>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:text="Complaint"
+            android:textColor="@color/delete"
             android:id="@+id/complaint"
             />
 
         <Button
             android:id="@+id/pay"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:textColor="@color/delete"
             android:text="Payment"/>
 
         <Button
             android:id="@+id/btnDeleteAccount"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginLeft="15dp"
+
             android:outlineSpotShadowColor="@color/colorBlack"
             android:textColor="@color/delete"
             android:text="Delete Account"/>

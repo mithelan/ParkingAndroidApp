@@ -376,7 +376,7 @@ builder.setItems(options, new DialogInterface.OnClickListener() {
         linearLayout.setPadding(10,10,10,10);
 
         final EditText editText=new EditText(getActivity());
-        editText.setInputType(TYPE_CLASS_NUMBER);
+
         editText.setHint("Enter,"+key);//hint
 
         linearLayout.addView(editText);
@@ -420,7 +420,7 @@ databaseReference.child(user.getUid()).updateChildren(result).addOnSuccessListen
 
                 }else
                 {
-                    Toast.makeText(getActivity(),"Phone number must be 10 digits",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Enter Again",Toast.LENGTH_SHORT).show();
                 }
             }
         });

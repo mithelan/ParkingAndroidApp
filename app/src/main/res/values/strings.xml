@@ -5,4 +5,30 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="txt_name">Name</string>
+    <string name="txt_mobile">07XXXXXXXX</string>
+    <string name="txt_email">abcd@email.com</string>
+    <string name="txt_date">DD/MM/YYYY</string>
+    <string name="txt_address">Address</string>
+    <string name="txt_complaints"></string>
+    <string name="btn_save">SAVE</string>
+    <string name="btn_show">SHOW</string>
+    <string name="btn_delete">DELETE</string>
+    <string name="btn_update">UPDATE</string>
+    <string name="btn_uploadImage">UPLOAD IMAGE</string>
+    <string name="btn_rating">Rating and Feedback</string>
+    <string name="btn_complaint">Complaints</string>
+    <string name="nbtn_submit">SUBMIT</string>
+
+    <string name="Card">Credit or Debit Card</string>
+    <string name="Date">MM/YY</string>
+    <string name="cvv">123</string>
+    <string name="No">xxxx xxxx xxxx xxxx</string>
+    <string name="Submit">Submit</string>
+    <string name="Show">Show</string>
+    <string name="Update">Update</string>
+    <string name="Delete">Delete</string>
+
 </resources>

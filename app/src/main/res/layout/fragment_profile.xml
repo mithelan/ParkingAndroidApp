@@ -89,6 +89,20 @@
         android:layout_marginTop="275dp"
         android:background="#ffffff">
 
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complaint"
+            android:id="@+id/complaint"
+            />
+
+        <Button
+            android:id="@+id/pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment"/>
+
         <Button
             android:id="@+id/btnDeleteAccount"
             android:layout_width="150dp"

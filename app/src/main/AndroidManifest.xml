@@ -3,8 +3,7 @@
     package="com.example.userprofile">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -14,7 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".Retrieve"></activity>
+        <activity android:name=".PriMainActivity" />
+        <activity android:name=".Details" />
+        <activity android:name=".Cash" />
+        <activity android:name=".Card" />
+        <activity android:name=".CRUDActivity" />
+        <activity android:name=".nUploadImage" />
+        <activity android:name=".FrontActivity" />
+        <activity android:name=".DisplayCommentActivity" />
+        <activity android:name=".CheckRating" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity">

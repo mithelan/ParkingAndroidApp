@@ -69,7 +69,7 @@ public class ProfileFragment extends Fragment {
     FloatingActionButton fab;
 
     ProgressBar progressBar;
-    Button deleteAccount;
+    Button deleteAccount,mcomplaint,mpayment;
     //storage
     StorageReference storageReference;
     //pth where images of user saved
@@ -126,6 +126,26 @@ public class ProfileFragment extends Fragment {
         phoneTv = view.findViewById(R.id.phoneTv);
         fab = view.findViewById(R.id.fab);
         deleteAccount = view.findViewById(R.id.btnDeleteAccount);
+        mcomplaint=view.findViewById(R.id.complaint);
+        mpayment=view.findViewById(R.id.pay);
+
+
+        mpayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pri =new Intent(getActivity(),PriMainActivity.class);
+                startActivity(pri);
+            }
+        });
+
+
+        mcomplaint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent niro=new Intent(getActivity(),FrontActivity.class);
+                startActivity(niro);
+            }
+        });
 
 
 

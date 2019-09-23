@@ -7,9 +7,7 @@
     android:background="#F1EDED"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -29,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:outlineSpotShadowColor="@color/colorBlack">
+              >
 
                 <ImageView
                     android:id="@+id/avatarIv"
@@ -83,11 +81,31 @@
                 </LinearLayout>
 
 
-
-
             </LinearLayout>
 
-        </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="460dp"
+        android:layout_marginTop="275dp"
+        android:background="#ffffff">
+
+        <Button
+            android:id="@+id/btnDeleteAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Account"/>
+
+        <ProgressBar
+            android:id="@+id/p"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="-100dp"></ProgressBar>
+
+
+
+
+
+    </LinearLayout>
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -121,6 +139,10 @@
             android:layout_marginTop="245dp"
             android:layout_marginLeft="10dp"/>
     </RelativeLayout>
+
+
+
+
 
 
 

@@ -23,12 +23,15 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -56,34 +59,36 @@ import static com.google.firebase.storage.FirebaseStorage.getInstance;
  */
 public class ProfileFragment extends Fragment {
 
-FirebaseAuth firebaseAuth;
-FirebaseUser user;
-FirebaseDatabase firebaseDatabase;
-DatabaseReference databaseReference;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     ImageView avartarIv;
-    TextView nameTv,emailTv,phoneTv;
+    TextView nameTv, emailTv, phoneTv;
     FloatingActionButton fab;
 
+    ProgressBar progressBar;
+    Button deleteAccount;
     //storage
     StorageReference storageReference;
     //pth where images of user saved
-    String storagePath="Users_Profile_Imgs/";
+    String storagePath = "Users_Profile_Imgs/";
 
     ProgressDialog pd;
 
     //permissions
-    private static final int CAMERA_REQUEST_CODE=100;
-    private static final int STORAGE_REQUEST_CODE=200;
-    private static final int IMAGE_PICK_GALLERY_CODE=300;
-    private static final int IMAGE_PICK_CAMERA_CODE=400;
+    private static final int CAMERA_REQUEST_CODE = 100;
+    private static final int STORAGE_REQUEST_CODE = 200;
+    private static final int IMAGE_PICK_GALLERY_CODE = 300;
+    private static final int IMAGE_PICK_CAMERA_CODE = 400;
 
 
-   String cameraPermissions[];
+    String cameraPermissions[];
     String storagePermissions[];
 
-     Uri image_uri;
+    Uri image_uri;
 
-     //for checking profilepic
+    //for checking profilepic
     String profilephoto;
 
     public ProfileFragment() {
@@ -95,43 +100,124 @@ DatabaseReference databaseReference;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view=inflater.inflate(R.layout.fragment_profile,container,false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        firebaseAuth=firebaseAuth.getInstance();
-        user=firebaseAuth.getCurrentUser();
-        firebaseDatabase=firebaseDatabase.getInstance();
-        databaseReference=firebaseDatabase.getReference("Users");
-        storageReference=getInstance().getReference();//firebase storage ref
+        firebaseAuth = firebaseAuth.getInstance();
+
+        //delete
+        user = firebaseAuth.getCurrentUser();
+
+        user = firebaseAuth.getCurrentUser();
+        firebaseDatabase = firebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("Users");
+        storageReference = getInstance().getReference();//firebase storage ref
         //INt arrays of perm
 
 
-
-        cameraPermissions=new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        storagePermissions=new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
 
         //Views
-        avartarIv=view.findViewById(R.id.avatarIv);
-        nameTv=view.findViewById(R.id.nameTv);
-        emailTv=view.findViewById(R.id.emailTv);
-        phoneTv=view.findViewById(R.id.phoneTv);
-        fab=view.findViewById(R.id.fab);
+        avartarIv = view.findViewById(R.id.avatarIv);
+        nameTv = view.findViewById(R.id.nameTv);
+        emailTv = view.findViewById(R.id.emailTv);
+        phoneTv = view.findViewById(R.id.phoneTv);
+        fab = view.findViewById(R.id.fab);
+        deleteAccount = view.findViewById(R.id.btnDeleteAccount);
+        progressBar = view.findViewById(R.id.p);
 
-//int pd
-        pd=new ProgressDialog(getActivity());
 
-        Query query=databaseReference.orderByChild("email").equalTo(user.getEmail());
+         //DELETE
+
+
+        deleteAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                final AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity());
+
+                dialog.setTitle("Are You Sure?");
+
+                dialog.setMessage("Deleting this account will remobve the details of your account");
+
+                dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                progressBar.setVisibility(View.VISIBLE);
+                                user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(getActivity(), "Account Deleted", Toast.LENGTH_LONG).show();
+                                        } else {
+                                            Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+                                });
+
+
+                            }
+
+                        });
+                        dialog.setNegativeButton("Dimiss", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+
+                        AlertDialog alertDialog= dialog.create();
+                        alertDialog.show();
+                    }
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //int pd
+        pd = new ProgressDialog(getActivity());
+
+        Query query = databaseReference.orderByChild("email").equalTo(user.getEmail());
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for(DataSnapshot ds:dataSnapshot.getChildren()){
-//gtdata
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-                    String name=""+ds.child("name").getValue();
-                    String email=""+ds.child("email").getValue();
-                    String phone=""+ds.child("phone").getValue();
-                    String image=""+ds.child("image").getValue();
+                    //gtdata
+
+                    String name = "" + ds.child("name").getValue();
+                    String email = "" + ds.child("email").getValue();
+                    String phone = "" + ds.child("phone").getValue();
+                    String image = "" + ds.child("image").getValue();
 
 
                     //set
@@ -139,10 +225,10 @@ DatabaseReference databaseReference;
                     emailTv.setText(email);
                     phoneTv.setText(phone);
 
-                    try{
+                    try {
                         //if image is recived
                         Picasso.get().load(image).into(avartarIv);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         Picasso.get().load(R.drawable.ic_add).into(avartarIv);
                     }
 
@@ -150,6 +236,14 @@ DatabaseReference databaseReference;
 
 
             }
+
+
+
+
+
+
+
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -166,7 +260,13 @@ DatabaseReference databaseReference;
         });
 
         return view;
+
+
     }
+
+
+
+
 
     private boolean checkStoragePermission(){
       boolean result= ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.WRITE_EXTERNAL_STORAGE)==
@@ -518,4 +618,6 @@ pd.show();
 
 
     }
+
+
 }

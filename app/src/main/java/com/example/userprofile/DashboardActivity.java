@@ -1,13 +1,17 @@
 package com.example.userprofile;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,6 +22,8 @@ public class DashboardActivity extends AppCompatActivity {
 
 
     FirebaseAuth firebaseAuth;
+    Button deleteaccount;
+
 
 
 
@@ -27,7 +33,11 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
 
+        deleteaccount=findViewById(R.id.btnDeleteAccount);
+
         firebaseAuth=firebaseAuth.getInstance();
+
+
 
         BottomNavigationView navigationView=findViewById(R.id.navigation);
         navigationView.setOnNavigationItemSelectedListener(selectedListener);
@@ -39,6 +49,10 @@ public class DashboardActivity extends AppCompatActivity {
         FragmentTransaction ft1=getSupportFragmentManager().beginTransaction();
         ft1.replace(R.id.content,fragment1,"");
         ft1.commit();
+
+
+
+
 
     }
     private BottomNavigationView.OnNavigationItemSelectedListener selectedListener= new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -54,6 +68,10 @@ public class DashboardActivity extends AppCompatActivity {
                     ft1.replace(R.id.content,fragment1,"");
                     ft1.commit();
                     return true;
+
+
+
+
 
 
                 case R.id.nav_profile: //profile
@@ -104,6 +122,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
 //
+
 
 
     @Override

@@ -50,10 +50,12 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     ProgressDialog pd;
+    androidx.appcompat.app.AlertDialog alertDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        onfirst();
 
 
 
@@ -320,4 +322,38 @@ pd.show();
     }
 
 
+    public void alert(View v) {
+
+    }
+
+    public void onfirst(){
+        boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true );
+        if (isFirstRun){
+            //place your dialog code here to display the dialog
+            new androidx.appcompat.app.AlertDialog.Builder(LoginActivity.this)
+                    .setTitle("Terms & Condition")
+                    .setMessage("You must not park in any area marked, reserved unless especially allocated to you.\n\n" +
+                            "You must comply with all rules or directions displayed in the bike park from time to time and with al relevant laws.\n\n"+"You are liable for any damage to the bike park caused by your vehicle, including damage caused by oil or other substances\n\nDue to Srilankan current situation bring a NIC copy with you. "
+                    )
+                    .setNegativeButton("Decline", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            finish();
+                            System.exit(0);
+                        }
+                    })
+                    .setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                                    .edit()
+                                    .putBoolean("isFirstRun", false)
+                                    .apply();
+
+                        }
+                    }).show();
+        }
+    }
+
 }
+

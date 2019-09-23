@@ -91,8 +91,12 @@
 
         <Button
             android:id="@+id/btnDeleteAccount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="15dp"
+            android:outlineSpotShadowColor="@color/colorBlack"
+            android:textColor="@color/delete"
             android:text="Delete Account"/>
 
 
@@ -102,6 +106,12 @@
 
     </LinearLayout>
 
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="180dp"
+                android:layout_marginLeft="260dp"
+                android:text="Edit your profile"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"

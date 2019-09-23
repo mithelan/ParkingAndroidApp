@@ -141,7 +141,7 @@ public class ProfileFragment extends Fragment {
 
                 dialog.setTitle("Are You Sure?");
 
-                dialog.setMessage("Deleting this account will remobve the details of your account");
+                dialog.setMessage("Deleting this account will remove the details of your Profile.Select delete to delete your Account.Hope to See You Again!");
 
                 dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override

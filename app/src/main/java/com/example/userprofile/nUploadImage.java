@@ -35,7 +35,7 @@ public class nUploadImage extends AppCompatActivity {
 
     //creating reference to firebase storage
     FirebaseStorage storage = FirebaseStorage.getInstance();
-    StorageReference storageRef = storage.getReferenceFromUrl("gs://complaints2-4a8cc.appspot.com");    //change the url according to your firebase app
+    StorageReference storageRef = storage.getReferenceFromUrl("gs://userprofile-a8abb.appspot.com");    //change the url according to your firebase app
 
 
     @Override

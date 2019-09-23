@@ -51,6 +51,7 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 
 import static android.app.Activity.RESULT_OK;
+import static android.text.InputType.TYPE_CLASS_NUMBER;
 import static com.google.firebase.storage.FirebaseStorage.getInstance;
 
 
@@ -355,9 +356,11 @@ builder.setItems(options, new DialogInterface.OnClickListener() {
         linearLayout.setPadding(10,10,10,10);
 
         final EditText editText=new EditText(getActivity());
-        editText.setHint("Enter "+key);//hint
+        editText.setInputType(TYPE_CLASS_NUMBER);
+        editText.setHint("Enter,"+key);//hint
 
         linearLayout.addView(editText);
+
 
         builder.setView(linearLayout);
 
@@ -369,7 +372,9 @@ builder.setItems(options, new DialogInterface.OnClickListener() {
                         //input
                 String value=editText.getText().toString().trim();
 
-                if(!TextUtils.isEmpty(value)){
+                if(editText.length()==10){
+
+
 
                    pd.show();
                    HashMap<String,Object>result=new HashMap<>();
@@ -395,7 +400,7 @@ databaseReference.child(user.getUid()).updateChildren(result).addOnSuccessListen
 
                 }else
                 {
-                    Toast.makeText(getActivity(),"Enter",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Phone number must be 10 digits",Toast.LENGTH_SHORT).show();
                 }
             }
         });
